@@ -134,10 +134,10 @@ namespace Zintom.Forms
             // Create the final bitmap
             var bmpSurface = new System.Drawing.Bitmap((int)size.Width, (int)size.Height);
             var g = System.Drawing.Graphics.FromImage(bmpSurface);
-            g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
+            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Low;
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
+            g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SingleBitPerPixelGridFit;
 
             // Draw the text to the clean bitmap
             g.Clear(backColor);
@@ -146,7 +146,7 @@ namespace Zintom.Forms
             // Save the bitmap to a stream and then re-load it as a Texture2D.
             using (MemoryStream stream = new MemoryStream())
             {
-                bmpSurface.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
+                bmpSurface.Save(stream, System.Drawing.Imaging.ImageFormat.Bmp);
                 renderSurface = Texture2D.FromStream(graphics, stream);
             }
 
