@@ -126,6 +126,9 @@ namespace Zintom.Forms
 #endif
             // Measure the text with the already instantated measureGraphics object.
             var size = measureGraphics.MeasureString(text, font);
+            // Workaround for whitespace strings
+            if (size.Width == 0) size.Width = 1;
+            if (size.Height == 0) size.Height = 1;
             this.size = new Vector2(size.Width, size.Height);
 
             // Create the final bitmap
